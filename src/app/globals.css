@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+	/* Paleta de cores principal */
+	--primary: #6772e5; /* Azul do Stripe */
+	--primary-light: #7795f8;
+	--primary-dark: #555abf;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	/* Cores de apoio */
+	--secondary: #32325d; /* Azul escuro do Stripe */
+	--accent: #24b47e; /* Verde do Stripe para elementos de sucesso */
+	--warning: #f7b731; /* Amarelo para alertas */
+	--error: #e25950; /* Vermelho para erros */
+
+	/* Cores de fundo e texto */
+	--background: #ffffff;
+	--background-alt: #f6f9fc; /* Cinza claro do Stripe */
+	--foreground: #24292e;
+
+	/* Outros elementos */
+	--card-bg: #ffffff;
+	--border: #e6ebf1;
+	--input-bg: #f6f9fc;
+
+	/* Fontes */
+	--font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		"Liberation Mono", "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--primary: #7795f8;
+		--primary-light: #9cb3fa;
+		--primary-dark: #555abf;
+
+		--secondary: #4f566b;
+		--accent: #3ecf8e;
+		--warning: #f9cd4c;
+		--error: #ff6b6b;
+
+		--background: #1a1f36;
+		--background-alt: #151a30;
+		--foreground: #f6f9fc;
+
+		--card-bg: #242b42;
+		--border: #36384a;
+		--input-bg: #2d354a;
+	}
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-sans);
+}
+
+/* Classes de utilidade personalizadas */
+.card {
+	background: var(--card-bg);
+	border: 1px solid var(--border);
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.gradient-text {
+	background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.stripe-button {
+	background: var(--primary);
+	color: white;
+	font-weight: 600;
+	padding: 0.5rem 1rem;
+	border-radius: 0.375rem;
+	transition: all 0.15s ease;
+	border: none;
+}
+
+.stripe-button:hover {
+	background: var(--primary-dark);
+	transform: translateY(-1px);
+	box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
