@@ -35,8 +35,8 @@ export async function POST(request: Request) {
 			);
 		}
 
-		const headersList = headers();
-		// O headers().get não retorna uma Promise, então não precisa de await
+		// Nova abordagem para lidar com headers no Next.js 15+
+		const headersList = await headers();
 		const protocol = headersList.get("x-forwarded-proto") || "http";
 		const host = headersList.get("host");
 		const baseUrl = `${protocol}://${host}`;
