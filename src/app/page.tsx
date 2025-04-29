@@ -14,6 +14,7 @@ type UserSession = Session & {
 		name?: string | null;
 		email?: string | null;
 		image?: string | null;
+		credits?: number;
 	};
 };
 
@@ -34,7 +35,7 @@ export default function Home() {
 
 	return (
 		<main className="min-h-screen bg-background font-sans">
-			<Navbar status={status} />
+			<Navbar status={status} session={userSession} />
 			<HeroSection status={status} session={userSession} />
 			<FeaturesSection />
 			<HowItWorksSection />
