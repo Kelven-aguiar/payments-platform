@@ -36,9 +36,9 @@ export async function POST(request: Request) {
 		}
 
 		const headersList = headers();
-		// Usar await com os headers
-		const protocol = (await headersList.get("x-forwarded-proto")) || "http";
-		const host = await headersList.get("host");
+		// O headers().get não retorna uma Promise, então não precisa de await
+		const protocol = headersList.get("x-forwarded-proto") || "http";
+		const host = headersList.get("host");
 		const baseUrl = `${protocol}://${host}`;
 
 		const checkoutSession = await stripe.checkout.sessions.create({
